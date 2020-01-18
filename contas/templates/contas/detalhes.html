@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalhes</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+     {% csrf_token %}
+        <div class="page_header">
+        <h2>Detalhes da Conta</h2>
+        </div>
+        <a class="btn btn-primary" href="/contas/">Voltar</a>
+        <dl class="dl-horizontal">
+            <dt>Nome:</dt>
+            <dd>{{ object.tipo_conta }}</dd>
+            <dt>Data de Criação:</dt>
+            <dd>{{ object.data_de_criacao|date:"d/m/Y H:i"}}</dd>
+            <dt>Descrição:</dt>
+            <dd>{{ object.descricao }}</dd>
+            <dt>Status:</dt>
+            <dd>{% if item.status %}Finalizado{% else %}Aberto{% endif %} </dd>
+            {% if object.data_de_execucao %}
+            <dt>Data de Execução:</dt>
+            <dd>{{ object.data_de_execucao |date:"d/m/Y H:i"}}</dd>
+
+            {% endif %}
+        </dl>
+            <a class="btn btn-primary" href="/contas/atualiza/{{ object.pk }}">Atualizar</a>
+            <a class="btn btn-danger" href="/contas/excluir/{{ object.pk }}">Excluir</a>
+
+
+        {% endblock %}
+
+</body>
+</html>

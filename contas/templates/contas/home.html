@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home_Contas</title>
+</head>
+<body>
+        {% extends "base.html" %}
+        {% block content %}
+
+        <div class="page_header">
+        <h2>Minhas Contas</h2>
+        </div>
+
+        <div class="page-header">
+            <h2>{% if user.is_authenticated %}
+            Olá {{ user.first_name }} seja bem vindo, o que deseja fazer hoje?
+            {% endif %}</h2>
+            <h3> <a href="/contas/">Minhas Contas</a></h3>
+        </div>
+        Você tem {{ counter }} {% if count > 0 %}tarefas abertas{% else %}tarefa
+             aberta{% endif %}
+        <a class="btn btn-primary" href="/contas/criar/">Adicionar Conta</a>
+
+        {% endblock %}
+</body>
+</html>
